@@ -1,0 +1,414 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Prevents horizontal scrollbar if content slightly exceeds viewport */
+  font-family: 'Roboto', sans-serif; 
+  color: #333; 
+}
+
+/* IMPORTANT: Prevent content from being hidden under the fixed nav bar */
+/* You need to add padding to the body or your main content container */
+body {
+  margin: 0px;
+  padding-top: 40px ;
+  /* Example: if your nav bar is 60px tall, add 70px padding to body */
+}
+
+.hero-container {
+  position: relative;
+  width: 100vw; /* Full viewport width */
+  height: calc(100vh - 40px); /* Full viewport height */
+  margin: 0 ; /* Center the container */
+  padding: 0 ;
+  overflow: hidden; /* Ensures content doesn't spill out */
+}
+
+/* Home page hero image and band name */
+.hero-image {
+  width: 100%;
+  height: 100%; /* Maintain aspect ratio */
+  object-fit: cover; /* Cover the entire container */
+  object-position: top center;
+  display: block; /* Removes extra space below image */
+}
+
+.band-name-overlay {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the overlay */
+  width: 90%; /* Occupy most of the width for scaling */
+  text-align: center;
+  color: #e46905; /* Or your preferred text color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional: for better readability */
+  pointer-events: none; /* Allows clicks to pass through to elements behind */
+}
+
+.band-name {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700; /* Bold Roboto */
+  white-space: nowrap; /* Prevent text from wrapping */
+  font-size: 10vw; /* This is the magic for scaling based on viewport width */
+  line-height: 1; /* Adjust if needed to control vertical spacing */
+  display: inline-block; /* Essential for text scaling with vw units */
+  max-width: 100%; /* Ensures it respects the parent width */
+  overflow: hidden; /* Hides any overflow if text gets too big for the container */
+  text-overflow: ellipsis; /* Optional: adds an ellipsis if text is cut off */
+}
+
+.band-photo-wrapper {
+    margin: 0px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Navigation Styling */
+.main-nav {
+    height: 40px; /* Set a fixed height for the nav bar */
+    background-color: #e46905;
+    position: fixed; /* This is the magic property! */
+    top: 0;          /* Aligns it to the very top of the viewport */
+    left: 0;         /* Aligns it to the very left of the viewport */
+    width: 100%;     /* Ensures it spans the full width of the screen */
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    z-index: 1000;   /* Ensures it stays on top of other content */
+    display: flex;   /* Use flexbox for internal alignment of nav items */
+    justify-content: space-between; /* Space out items */
+    align-items: center; /* Vertically center items */
+    box-sizing: border-box; /* Ensures padding is included in the total width */  
+
+    .brand-logo {
+      display: block; // Show by default (mobile first)
+      height: 100%; // Make the brand-logo container take full height of main-nav
+      display: flex; // Use flex to help center or align the image inside
+      align-items: center; // Vertically center the image if the logo div has extra height
+      justify-content: flex-start; // Align to the start of the nav bar
+      a {
+        height: 100%; // Ensure image doesn't exceed the height of its parent (.brand-logo)
+        color: #fff;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-decoration: none;
+        padding-bottom: 10px;      }
+    }
+  }
+
+.hamburger-menu {
+  display: none; /* Hidden by default on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001; /* Ensure it's above the nav links container */
+
+  svg {
+    fill: #fff; /* Hamburger icon color */
+  }
+}
+
+.main-nav a:hover {
+    color: #fff; /* Change text color on hover */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Smooth hover effect */
+  }
+
+.nav-links-container {
+  display: flex; /* Flexbox for desktop layout */
+  gap: 20px; /* Space between nav components and icons on desktop */
+  align-items: center;
+
+  .nav-components {
+      display: flex;
+      gap: 20px; /* Space between nav links */
+  }
+
+  .nav-components a {
+    text-decoration: none;
+    color: #333; /* Changed to white for better contrast with orange nav */
+    font-weight: bold;
+    transition: color 0.3s ease;
+    }
+
+  .nav-components a:hover {
+    color: #fff; /* Change text color on hover */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Smooth hover effect */
+  }
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+
+.nav-icons a {
+    color: #333;
+    font-size: 1.5rem; /* Adjust icon size */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth hover effect */
+  }
+}
+
+.nav-icons a:hover {
+    color: #fff; /* Change icon color on hover */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth hover effect */
+  }
+
+/* Add a new class for general page content that needs spacing */
+.page-padded-content {
+    padding-top: 10px; /* Adjust this to your nav bar's height */
+    /* Add other general page styling like max-width, margin auto etc. here if desired */
+    max-width: 800px; /* Example max-width */
+    margin: 30px ;   /* Center content */
+    padding-left: 20px; /* Add some side padding */
+    padding-right: 20px;
+    box-sizing: border-box; /* Include padding in element's total width */
+  }
+
+  /* Styling for the band photo itself */
+  .band-photo {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+   /* border-radius: 8px; /* Apply rounded corners to the image */
+  }
+
+  /* Base styling for the text section */
+.text-container {
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background, similar to event section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 800px; /* Wider than events for content, but still constrained */
+    margin-bottom: 30px; /* Center the container */
+    margin-right:auto; /* Center the container */
+    margin-left:auto; /* Center the container */
+    margin-top: 30px; /* No top margin */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack elements vertically on small screens */
+    gap: 20px; /* Space between photo and text */
+    font-family: 'Roboto', sans-serif; /* Consistent font */
+    color: #333; /* Darker text for readability */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+
+  /* Styling for the text content wrapper */
+  .text-content-wrapper {
+    margin: 30px; /* Space between photo and text */
+    background-color: #ffffff; /* White background for text block */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Slightly less rounded than main container */
+    padding: 30px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); /* Subtle shadow for text block */
+    line-height: 1.6; /* Improve readability */
+  }
+
+  /* Heading styling */
+  .text-content-wrapper h2 {
+    text-align: center;
+    color: #e46905; /* Consistent blue heading color */
+    margin: 20px;
+    font-size: 1.8em; /* Slightly larger heading */
+  }
+
+  /* Paragraph styling */
+  .text-content-wrapper p {
+    margin-bottom: 15px; /* Space between paragraphs */
+  }
+
+  .music-container {
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background, similar to event section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 800px; /* Wider than events for content, but still constrained */
+    margin-bottom: 30px auto; /* Center the container */
+    margin-right:auto; /* Center the container */
+    margin-left:auto; /* Center the container */
+    margin-top: 30px auto; /* No top margin */
+    gap: 20px; /* Space between photo and text */
+    font-family: 'Roboto', sans-serif; /* Consistent font */
+    color: #333; /* Darker text for readability */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+    /* Styling for the text content wrapper */
+    .music-content-wrapper {
+      margin: auto; /* Space between photo and text */
+      background-color: transparent; /* White background for text block */
+      border: none; /* Light border */
+      border-radius: 8px; /* Slightly less rounded than main container */
+      padding: auto;
+      line-height: 1.6; /* Improve readability */
+    }
+  
+    .music-content-wrapper h2 {
+      text-align: left;
+      color: #e46905; /* Consistent blue heading color */
+      margin: 5px;
+      font-size: 1.8em; /* Slightly larger heading */
+    }
+
+/* Mobile-first adjustments (start hiding things) */
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block; /* Show hamburger on mobile */
+  }
+  
+  .main-nav {
+    .brand-logo {
+      // Ensure logo image is contained within the nav bar's height
+      height: 100%; // Make the brand-logo container take full height of main-nav
+      display: flex; // Use flex to help center or align the image inside
+      align-items: center; // Vertically center the image if the logo div has extra height
+      justify-content: flex-start; // Align to the start of the nav bar
+      
+      img {
+        height: 30px !important; // Ensure image doesn't exceed the height of its parent (.brand-logo)
+        width: 30px !important;     // Maintain aspect ratio by letting width adjust automatically
+        object-fit: contain; // <-- THIS IS THE KEY for fitting without cropping or distortion
+        // If 'contain' leaves too much space, try 'cover' and adjust object-position
+        // object-fit: cover;
+        // object-position: center; // Default, but you can change to 'left', 'top', etc.
+        display: block; // Ensure it behaves as a block element
+        border-radius: 8px; /* Optional: rounded corners for the logo */;
+      }
+    }
+  }
+
+  .nav-links-container {
+    // Off-canvas menu properties
+    position: fixed;
+    top: 0; /* Or `top: 40px;` if you want it to slide in below the nav bar */
+    left: -100%; /* Start off-screen to the left */
+    width: 70%; /* Adjust width of the menu when open */
+    height: 100vh; /* Full viewport height */
+    background-color: #333; /* Dark background for the menu */
+    flex-direction: column; /* Stack links vertically */
+    justify-content: flex-start; /* Align content to the top */
+    align-items: flex-start; /* Align links to the left */
+    padding-top: 60px; /* Padding inside the off-canvas menu */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: left 0.3s ease-in-out; /* Smooth slide transition */
+    z-index: 999; /* Below the hamburger, above content */
+
+    &.active {
+      left: 0; /* Slide in when active */
+    }
+
+    .nav-components {
+      flex-direction: column; /* Stack links vertically */
+      gap: 15px; /* Space between stacked links */
+      width: 100%;
+      padding: 20px 0; /* Padding for the link list */
+
+      a {
+        text-align: left;
+        padding: 10px 20px;
+        display: block; /* Make links fill their space for easier clicking */
+        color: #eee; /* Lighter color for links on dark background */
+      }
+    }
+
+    .nav-icons {
+      flex-direction: row; /* Keep icons side-by-side */
+      justify-content: center; /* Center icons */
+      width: 100%;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1); /* Separator */
+
+      a {
+        color: #eee;
+        font-size: 2rem; /* Larger icons on mobile */
+      }
+    }
+  }
+}
+
+  /* Responsive adjustments for larger screens (e.g., tablet and desktop) */
+  @media (min-width: 769px) {
+    
+    .brand-logo a {
+      display: none;
+    }
+
+    .hamburger-menu {
+      display: none; /* Hide hamburger on desktop */
+    }
+  
+    .nav-links-container {
+      position: static; /* Back to normal flow */
+      width: auto;
+      height: auto;
+      background-color: transparent;
+      flex-direction: row; /* Desktop layout: row */
+      padding-top: 0;
+      box-shadow: none;
+      transition: none; /* Remove transition */
+      flex-grow: 1;
+    }
+  
+    .nav-components {
+      margin-right: auto; /* <<< PUSH NAV-COMPONENTS TO THE LEFT */
+      // This will push the nav-icons to the far right, aligning nav-components to the left
+    }
+
+    .main-nav {
+        padding: 10px 20px; /* Adjust padding for smaller screens */
+        justify-content: flex-start; /* Align items to the left */
+      }
+      /* Adjustments for social media icons on smaller screens */
+      .nav-icons {
+        gap: 0.8em; /* Reduce gap between icons on smaller screens */
+      }
+      .nav-icons a {
+        font-size: 1.2rem; /* Reduce icon size on smaller screens */
+      }
+    
+      .content-area {
+        padding-top: 30px; /* Adjust padding for smaller screens if nav height changes */
+      }
+
+    .page-padded-content {
+        padding-top: 60px; /* Adjust for smaller nav height on mobile if applicable */
+    }
+
+    body {
+        padding-top: 30px; /* Adjust padding for smaller screens if nav height changes */
+    }
+
+    .text-container {
+      flex-direction: row; /* Layout side-by-side on larger screens */
+      align-items: flex-start; /* Align items to the top */
+      gap: 30px; /* More space between photo and text */
+    }
+
+    .text-content-wrapper {
+        flex: 1; /* Text takes remaining space */
+        margin-top: 0 ;
+    }
+
+    .band-photo-wrapper {
+      flex: 0 0 40%; /* Photo takes 40% width */
+      max-width: 40%; /* Ensure it doesn't grow beyond 40% */
+    }
+
+  }
+
+  @media (max-width: 600px) {
+    .band-name {
+      font-size: 15vw; /* Slightly larger on very small screens */
+    }
+  }
+  
+  @media (min-width: 1600px) {
+    .band-name {
+      font-size: 8vw; /* Slightly smaller on very large screens to prevent excessive size */
+    }
+  }

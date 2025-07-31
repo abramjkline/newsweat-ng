@@ -1,0 +1,53 @@
+<div class="page-container">
+  <nav class="main-nav">
+    <div class="brand-logo">
+      <a routerLink="/">
+        <img src="/assets/machines_cover_g.jpg" alt="Band Logo">
+      </a> 
+    </div>
+
+    <button class="hamburger-menu" (click)="toggleNavMenu()">
+      <svg viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+        <path d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+      </svg>
+    </button>
+
+    <div class="nav-links-container" [class.active]="isNavMenuOpen">
+      <div class="nav-components">
+        <a routerLink="/" (click)="closeNavMenu()">Home</a>
+        <a routerLink="/bio" (click)="closeNavMenu()">Bio</a>
+        <a routerLink="/music" (click)="closeNavMenu()">Music</a>
+        <!----  <a routerLink="/photos" (click)="closeNavMenu()">Photos</a>   
+        <a routerLink="/calendar" (click)="closeNavMenu()">Calendar</a> -->
+        <a routerLink="/contact" (click)="closeNavMenu()">Contact</a>
+      </div>
+      <div class="nav-icons">
+        <a href="https://www.youtube.com/@newsweat" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://open.spotify.com/artist/0zdOt1kW91Z0UcF59G5aTB" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-spotify .nav-icons"></i>
+        </a>
+        <a href="https://music.apple.com/us/artist/new-sweat/597131772" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-apple .nav-icons"></i>
+        </a>
+        <a href="https://www.instagram.com/newsweat/" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-instagram .nav-icons"></i>
+        </a>
+      </div>  
+    </div>
+  </nav>
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div class="footer">
+  <span class="copy">&copy; 2025 New Sweat. All rights reserved.</span>
+  <span class="nav-icons credit">
+    <a href="https://www.linkedin.com/in/abekline/" target="_blank" rel="noopener noreferrer" matTooltip="Website Created by Abe Kline">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+  </span>
+</div>

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router, NavigationEnd, ActivatedRoute } from '@angular/router'; // Import Router, etc.
 import { Title } from '@angular/platform-browser'; // Import Title service
 import { filter, map, mergeMap } from 'rxjs/operators'; // Import RxJS operators
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, MatTooltipModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

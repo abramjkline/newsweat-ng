@@ -7,11 +7,11 @@ import { PhotosComponent } from './photos/photos.component';
 import { ContactComponent } from './contact/contact.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'bio', component: BandBioComponent },
-  { path: 'music', component: MusicComponent },
-  { path: 'calendar', component: CalendarComponent },
-  { path: 'photos', component: PhotosComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: '', component: HomeComponent, title: 'New Sweat | Home', pathMatch: 'full' },
+  { path: 'bio', title: 'New Sweat | Bio', component: BandBioComponent },
+  { path: 'music', title: 'New Sweat | Music', component: MusicComponent },
+  { path: 'calendar', title: 'New Sweat | Calendar', component: CalendarComponent },
+  { path: 'photos', title: 'New Sweat | Photos', component: PhotosComponent },
+  { path: 'contact', title: 'New Sweat | Contact', component: ContactComponent },
   { path: '**', redirectTo: '' }
 ];

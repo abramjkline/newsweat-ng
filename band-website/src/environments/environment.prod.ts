@@ -1,5 +1,6 @@
-export const environment = {
-    production: true,
-    googleApiKey: {{GOOGLE_CALENDAR_API_KEY}}, // Your DEVELOPMENT API Key
-    // You can add other development-specific variables here
-  };
+import { Environment } from './environment.model';
+
+export const environment: Environment = {
+  production: true,
+  googleCalendarApiKey: '{{GOOGLE_CALENDAR_PROD_API_KEY}}',
+};

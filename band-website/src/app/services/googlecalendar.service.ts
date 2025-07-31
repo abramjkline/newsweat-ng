@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment'; // <--- Import environment
+import { environment } from 'src/environments/environment'; 
 
 // Define interfaces for type safety (optional but recommended)
 export interface CalendarEvent {
@@ -53,7 +53,7 @@ export interface GoogleCalendarResponse {
 export class GoogleCalendarService {
   // IMPORTANT: For production, do NOT hardcode API keys like this.
   // Use environment variables (Angular's environment.ts) or a server-side proxy.
-  private readonly API_KEY = environment.googleApiKey; // Your API Key
+  private readonly API_KEY: string = environment.googleCalendarApiKey; // Your API Key
   private readonly CALENDAR_ID = 'newsweat@gmail.com'; // Your Calendar ID
   private readonly BASE_URL = `https://www.googleapis.com/calendar/v3/calendars/${this.CALENDAR_ID}/events`;
 

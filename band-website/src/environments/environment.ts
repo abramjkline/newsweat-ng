@@ -1,5 +1,8 @@
-export const environment = {
-    production: false,
-    googleApiKey: process.env.NG_APP_GOOGLE_CALENDAR_API_KEY, // Your DEVELOPMENT API Key
-    // You can add other development-specific variables here
-  };
+// src/environments/environment.ts
+
+import { Environment } from './environment.model';
+
+export const environment: Environment = {
+  production: false,
+  googleCalendarApiKey: 'AIzaSyB9I26hwIsFwBCLTpltwA_aZKDQAaQEvqI',
+};

@@ -39,11 +39,11 @@ jobs:
       - name: Build Angular app
         run: npm run deploy
         working-directory: ./band-website
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist/band-website/browser'
+          path: 'band-website/dist/band-website/browser'
 
       - name: Deploy to GitHub Pages
         id: deployment

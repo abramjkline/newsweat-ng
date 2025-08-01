@@ -4,15 +4,12 @@ import { CommonModule } from '@angular/common';
 import {provideHttpClient} from '@angular/common/http';
 
 @Component({
-  selector: 'app-calendar',
-  standalone: true,
-  imports: [SafeHtmlPipe, CommonModule
-// TODO: `HttpClientModule` should not be imported into a component directly.
-// Please refactor the code to add `provideHttpClient()` call to the provider list in the
-// application bootstrap logic and remove the `HttpClientModule` import from this component.
-], // If you're using standalone components
-  templateUrl: './calendar.component.html',
-  styleUrl: './calendar.component.scss'
+    selector: 'app-calendar',
+    standalone: true,
+    providers: [],
+    imports: [SafeHtmlPipe, CommonModule ],
+    templateUrl: './calendar.component.html',
+    styleUrl: './calendar.component.scss'
 })
 export class CalendarComponent implements OnInit {
   calendarEmbedUrl: string = '';

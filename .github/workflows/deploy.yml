@@ -25,17 +25,21 @@ jobs:
 
       - name: Verify package-lock.json exists
         run: ls -la
+        working-directory: ./band-website
 
       - name: Install dependencies
         run: npm ci
+        working-directory: ./band-website
 
       - name: Inject Production API Key
         run: |
           sed -i "s|'{{GOOGLE_CALENDAR_PROD_API_KEY}}'|'${{ secrets.GOOGLE_CALENDAR_PROD_API_KEY }}'|g" src/environments/environment.prod.ts
-        
+        working-directory: ./band-website
+
       - name: Build Angular app
         run: npm run deploy
-
+        working-directory: ./band-website
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

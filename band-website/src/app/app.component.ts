@@ -1,24 +1,27 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Router, NavigationEnd, ActivatedRoute } from '@angular/router'; // Import Router, etc.
+import { RouterModule, Router, NavigationEnd, ActivatedRoute, RouterOutlet, RouterLink } from '@angular/router'; // Import Router, etc.
 import { Title } from '@angular/platform-browser'; // Import Title service
 import { filter, map, mergeMap } from 'rxjs/operators'; // Import RxJS operators
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterModule, MatTooltipModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    standalone: true,
+    imports: [CommonModule, RouterOutlet, RouterLink, MatTooltipModule],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit { // Implement OnInit
   isNavMenuOpen: boolean = false; // State for the mobile menu
 
+  // Inject Router, ActivatedRoute, and Title service
+  
+  // Note: @Inject is not necessary if using constructor injection directly
   constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private titleService: Title // Inject Title service
+    @Inject(Router) private router: Router,
+    @Inject(ActivatedRoute) private activatedRoute: ActivatedRoute,
+    @Inject(Title) private titleService: Title
   ) {}
   
   ngOnInit() {

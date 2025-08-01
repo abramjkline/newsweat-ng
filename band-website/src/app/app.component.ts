@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Router, NavigationEnd, ActivatedRoute, RouterOutlet } from '@angular/router'; // Import Router, etc.
+import { RouterModule, Router, NavigationEnd, ActivatedRoute, RouterOutlet, RouterLink } from '@angular/router'; // Import Router, etc.
 import { Title } from '@angular/platform-browser'; // Import Title service
 import { filter, map, mergeMap } from 'rxjs/operators'; // Import RxJS operators
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -8,7 +8,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [CommonModule, RouterOutlet, MatTooltipModule],
+    imports: [CommonModule, RouterOutlet, RouterLink, MatTooltipModule],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })

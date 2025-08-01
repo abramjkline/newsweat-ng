@@ -100,12 +100,12 @@ body {
 
 .band-name-sub {
   font-family: 'Roboto', sans-serif; /* Consistent font */
-  font-size: 7vw; /* Adjust size as needed */
+  font-size:7vw; /* Adjust size as needed */
   color: #fff; /* Optional: Add a custom color */
   margin-top: 10px; /* Space between band name and subtext */
   white-space: nowrap; /* Prevent text from wrapping */
   font-size: 3vw; /* This is the magic for scaling based on viewport width */
-  line-height: 1; /* Adjust if needed to control vertical spacing */
+  line-height: 1.5; /* Adjust if needed to control vertical spacing */
   display: inline-block; /* Essential for text scaling with vw units */
   max-width: 100%; /* Ensures it respects the parent width */
   overflow: hidden; /* Hides any overflow if text gets too big for the container */
@@ -386,7 +386,10 @@ body {
 
 @media (max-width: 600px) {
   .band-name {
-    font-size: 11vw; /* Slightly larger on very small screens */
+    font-size: 11.5vw; /* Slightly larger on very small screens */
+  }
+  .band-name-sub {
+    font-size: 4vw; /* Slightly larger on very small screens */
   }
 }
 

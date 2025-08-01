@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { SafeHtmlPipe } from '../safe-html.pipe'; // Adjust path if needed
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import {provideHttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [SafeHtmlPipe, CommonModule, HttpClientModule], // If you're using standalone components
+  imports: [SafeHtmlPipe, CommonModule
+// TODO: `HttpClientModule` should not be imported into a component directly.
+// Please refactor the code to add `provideHttpClient()` call to the provider list in the
+// application bootstrap logic and remove the `HttpClientModule` import from this component.
+], // If you're using standalone components
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss'
 })

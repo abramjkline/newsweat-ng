@@ -120,18 +120,28 @@
     font-size: 1.2em;
   }
 
+  .event-summary a, .noUrl {
+    color: #e46905;
+    text-decoration: none;
+    font-size: 0.9em;
+  }
+
+  .event-summary a:hover {
+    text-decoration: underline;
+  }
+
   .event-time {
     margin: 0;
     color: #555;
     font-size: 0.9em;
   }
 
-  .event-link a {
-    color: #e46905;
+  .event-location a {
+   // color: #e46905;
     text-decoration: none;
     font-size: 0.9em;
   }
 
-  .event-link a:hover {
+  .event-location a:hover {
     text-decoration: underline;
   }

@@ -24,12 +24,20 @@
   
       <ul class="event-list" *ngIf="upcomingEvents.length > 0">
         <li *ngFor="let event of upcomingEvents" class="event-item">
-          <h3 class="event-summary">{{ event.summary }}</h3>
+          <h3 class="event-summary">
+            <ng-container *ngIf="extractUrlFromDescription(event.description) as eventUrl; else plainTitle">
+              <a [href]="eventUrl" target="_blank" rel="noopener noreferrer">{{ event.summary }}</a>
+            </ng-container>
+            <ng-template #plainTitle >
+              <span class="noUrl">{{ event.summary }}</span>
+            </ng-template>
+          </h3>
           <p class="event-time">{{ formatEventTime(event) }}</p>
-          <p class="event-link" *ngIf="event.htmlLink">
-            <a [href]="event.htmlLink" target="_blank" rel="noopener noreferrer">View Details</a>
+          <p class="event-location" *ngIf="event.location">
+            <a [href]="createGoogleMapsLink(event.location)" target="_blank" rel="noopener noreferrer">{{ event.location }}</a>
           </p>
         </li>
       </ul>
     </div>
+
   </section>

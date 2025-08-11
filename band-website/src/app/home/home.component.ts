@@ -37,28 +37,84 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /**
+   * Extracts the first URL found in an event's description.
+   * @param description The event description string.
+   * @returns A URL string or null if not found.
+   */
+
+  extractUrlFromDescription(description: string | undefined): string | null {
+    if (!description) {
+      return null;
+    }
+    // Simple regex to find the first http or https URL
+    const urlRegex = /(https?:\/\/[^\s"<]+)/g;
+    const found = description.match(urlRegex);
+    return found ? found[0] : null;
+  }
+
+  /**
+   * Creates a Google Maps search link from a location string.
+   * @param location The location string from the event.
+   * @returns A URL for Google Maps or null if no location.
+   */
+  createGoogleMapsLink(location: string | undefined): string | null {
+    if (!location) {
+      return null;
+    }
+    // URL-encodes the location for the query parameter
+    const encodedLocation = encodeURIComponent(location);
+    return `https://www.google.com/maps/search/?api=1&query=${encodedLocation}`;
+  }
+
   // Helper function to format dates for display
   formatEventTime(event: CalendarEvent): string {
-    if (event.start.dateTime) {
+    if (event.start.dateTime && event.end.dateTime) {
       // For specific date and time
-      const date = new Date(event.start.dateTime);
-      return date.toLocaleDateString('en-US', {
+      const startDate = new Date(event.start.dateTime);
+      const endDate = new Date(event.end.dateTime);
+      
+      const datePart = startDate.toLocaleDateString('en-US', {
         weekday: 'short',
         month: 'short',
         day: 'numeric',
+      });
+
+      const startTime = startDate.toLocaleTimeString('en-US', {
         hour: 'numeric',
         minute: 'numeric',
         hour12: true
       });
-    } else if (event.start.date) {
-      // For all-day events (only date available)
-      const date = new Date(event.start.date);
-      return date.toLocaleDateString('en-US', {
+
+      const endTime = endDate.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+      });
+      
+      return `${datePart}, ${startTime} - ${endTime}`;
+    }
+
+// For all-day events (only date available)
+else if (event.start.date) {
+    // Parse the date string 'YYYY-MM-DD'
+    const dateString = event.start.date;
+    const parts = dateString.split('-');
+    
+    // Construct a new Date object using local time zone, avoiding UTC conversion
+    const year = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1; // Month is 0-indexed
+    const day = parseInt(parts[2], 10);
+    
+    const date = new Date(year, month, day);
+
+    return date.toLocaleDateString('en-US', {
         weekday: 'short',
         month: 'short',
         day: 'numeric'
-      }) + ' (All Day)';
-    }
-    return 'Date/Time TBA';
+    }) + ' (All Day)';
+}
+
+    return '';
   }
 }

@@ -14,6 +14,8 @@ export interface CalendarEvent {
   created: string;
   updated: string;
   summary: string;
+  description?: string;
+  location?: string;
   creator: {
     email: string;
     self: boolean;
